@@ -136,5 +136,26 @@ To run the pipelines:
 1.  Go to Azure Devops. 
 2.	Navigate to Pipelines and create a new pipeline using Azure Repos Git 
 3.	Select your Repo and select ‘Existing Azure Pipelines YAML Files’ 
-4.	We’ll set up CI pipeline first, so we select our branch and the training-pipeline-ci file.  
+4.	We’ll set up CI pipeline first, so we select our branch and the training-pipeline-ci file.
+5.	We run the pipeline. 
+6.	Once this step is done, our CI pipeline should be set up. The next time we push our codes to the repo the CI pipeline should run automatically.  
+
+Now we repeat the same process for the ‘training-pipeline-cd.yaml’ file to create our CD pipeline.  
+Once it runs successfully, we should be able to see our endpoint in the Azure Machine Learning Studio, under the Assets section in Endpoints.  
+
+Whenever we invoke the endpoint, we can see it in the job section.  
+
+## Development & Deployment Considerations:  
+
+*	Making sure the input files are present in the location as mentioned in the variables. 
+*	Keep the output path different from the input path, or in a different directory 
+*	Creating various Test Cases & add it to the CI Pipeline as a step  
+*	Before raising PR, check the code once as an AdHoc Experimentation. Testing the functional logic is must and checking the efficiency of the code. 
+*	Proper python coding conventions and standards should be followed. 
+*	Invoking the endpoint in the code is to smoke test the endpoint. Executing or triggering the endpoint should be coordinated through an orchestration process. 
+*	Deploying the pipeline endpoint shouldn’t be done through the UI. It should be defined in the code itself.  
+* Avoid adding input parameters explicitly to the pipeline endpoints to make them reusable for different inputs files and output. Adding default parameters is fine.  
+ 
+
+
 
